@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="자리 바꾸기, PDF 글자 수 세기, 생활기록부 개인정보 가리기, 로컬 일기장을 모은 교실 도구함">
+  <title>교실 도구함</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="global-nav">
+    <div class="nav-inner">
+      <button class="brand-button" id="brandButton" type="button" aria-label="교실 도구함 홈으로 이동">
+        <span class="brand-mark" aria-hidden="true">T</span>
+        <span>교실 도구함</span>
+      </button>
+      <span class="privacy-note"><span class="status-dot" aria-hidden="true"></span>이 기기에만 저장</span>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="view hub-view is-active" id="hubView" aria-labelledby="hubTitle">
+      <div class="hero">
+        <p class="eyebrow">TEACHER'S TOOLBOX</p>
+        <h1 id="hubTitle">수업의 작은 일을<br>가볍게 해결하세요.</h1>
+        <p class="hero-copy">필요한 교실 도구를 한곳에서 실행하세요.<br>자료는 외부 서버로 전송되지 않고 이 컴퓨터에만 남습니다.</p>
+      </div>
+
+      <section class="app-stage" aria-labelledby="appsTitle">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">MY APPS</p>
+            <h2 id="appsTitle">내 프로그램</h2>
+          </div>
+          <span class="app-count">4개의 도구</span>
+        </div>
+        <div class="app-grid">
+          <button class="app-card" id="openSeatApp" type="button">
+            <span class="app-art" aria-hidden="true">
+              <span class="mini-board">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </span>
+            </span>
+            <span class="app-copy">
+              <span class="new-label">교실 도구</span>
+              <strong>자리 바꾸기</strong>
+              <span>학생 명단과 교실 모양을 저장하고, 고정 좌석을 제외해 공정하게 섞어요.</span>
+              <span class="text-link">앱 열기 <b aria-hidden="true">→</b></span>
+            </span>
+          </button>
+          <button class="app-card pdf-app-card" id="openPdfApp" type="button">
+            <span class="app-art pdf-card-art" aria-hidden="true">
+              <span class="paper-stack">
+                <i class="paper-back"></i>
+                <i class="paper-front"><b>PDF</b><em>1,248</em><small>글자</small></i>
+              </span>
+            </span>
+            <span class="app-copy">
+              <span class="new-label">새 도구</span>
+              <strong>PDF 글자 수 세기</strong>
+              <span>PDF의 텍스트를 브라우저에서만 읽어 공백 포함·제외 글자 수를 즉시 계산해요.</span>
+              <span class="text-link">앱 열기 <b aria-hidden="true">→</b></span>
+            </span>
+          </button>
+          <button class="app-card redact-app-card" id="openRedactApp" type="button">
+            <span class="app-art redact-card-art" aria-hidden="true">
+              <span class="redact-paper">
+                <i></i><i></i><i class="hidden-line"></i><i></i><i class="hidden-line short"></i>
+                <b>안전한 복사본</b>
+              </span>
+            </span>
+            <span class="app-copy">
+              <span class="new-label">개인정보 보호</span>
+              <strong>생활기록부 가리기</strong>
+              <span>PDF를 기기 안에서 읽고 학생·학교를 추정할 단서를 가려 외부 AI에 붙여넣을 안전한 복사본을 만들어요.</span>
+              <span class="text-link">앱 열기 <b aria-hidden="true">→</b></span>
+            </span>
+          </button>
+          <a class="app-card diary-app-card" href="/diary/">
+            <span class="app-art diary-card-art" aria-hidden="true">
+              <span class="diary-book">
+                <i class="diary-ring"></i>
+                <b>오늘의 기록</b>
+                <em>나를 위한<br>조용한 한 페이지</em>
+                <small>OCT · 17</small>
+              </span>
+            </span>
+            <span class="app-copy">
+              <span class="new-label">로컬 저장</span>
+              <strong>나의 일기장</strong>
+              <span>기분과 태그를 함께 기록하고, 지난 일기를 빠르게 찾아보세요. 데이터는 로컬 폴더에만 남아요.</span>
+              <span class="text-link">앱 열기 <b aria-hidden="true">→</b></span>
+            </span>
+          </a>
+        </div>
+      </section>
+    </section>
+
+    <section class="view app-view" id="seatView" aria-labelledby="seatAppTitle">
+      <div class="app-local-nav">
+        <div>
+          <button class="back-button" id="backToHub" type="button">← 허브</button>
+          <span class="local-title" id="seatAppTitle">자리 바꾸기</span>
+        </div>
+        <div class="local-actions">
+          <button class="pill pill-outline" id="orientationButton" type="button">학생 시점으로 보기</button>
+          <button class="pill pill-blue" id="shuffleButton" type="button">자리 섞기</button>
+        </div>
+      </div>
+
+      <div class="workspace">
+        <aside class="settings-card" aria-labelledby="settingsTitle">
+          <div class="settings-head">
+            <div>
+              <p class="section-kicker">SETUP</p>
+              <h2 id="settingsTitle">교실 설정</h2>
+            </div>
+            <button class="icon-button" id="collapseSettings" type="button" aria-label="설정 접기" aria-expanded="true">−</button>
+          </div>
+
+          <div class="settings-body" id="settingsBody">
+            <section class="setting-section">
+              <label class="field-label" for="className">학급 이름</label>
+              <input class="text-input" id="className" maxlength="30" placeholder="예: 2학년 3반">
+            </section>
+
+            <section class="setting-section">
+              <div class="field-label">교실 크기</div>
+              <div class="size-row">
+                <label>가로
+                  <select id="columnsSelect" aria-label="좌석 가로 칸 수"></select>
+                </label>
+                <span aria-hidden="true">×</span>
+                <label>세로
+                  <select id="rowsSelect" aria-label="좌석 세로 줄 수"></select>
+                </label>
+                <button class="small-button" id="applySizeButton" type="button">적용</button>
+              </div>
+            </section>
+
+            <section class="setting-section">
+              <div class="setting-title-row">
+                <div>
+                  <span class="field-label">학생 명단</span>
+                  <span class="count-badge" id="studentCount">0명</span>
+                </div>
+                <button class="text-button" id="toggleBulkButton" type="button">한꺼번에 입력</button>
+              </div>
+
+              <div class="bulk-entry" id="bulkEntry" hidden>
+                <label class="sr-only" for="bulkNames">한 줄에 한 명씩 학생 이름 입력</label>
+                <textarea id="bulkNames" rows="7" placeholder="한 줄에 한 명씩 입력하세요&#10;김하늘&#10;박서준&#10;이도윤"></textarea>
+                <div class="inline-actions">
+                  <button class="small-button secondary" id="cancelBulkButton" type="button">취소</button>
+                  <button class="small-button" id="applyBulkButton" type="button">명단 적용</button>
+                </div>
+              </div>
+
+              <form class="add-student" id="addStudentForm">
+                <label class="sr-only" for="studentNameInput">추가할 학생 이름</label>
+                <input class="text-input" id="studentNameInput" maxlength="30" placeholder="학생 이름">
+                <button class="small-button" type="submit">추가</button>
+              </form>
+              <ul class="student-list" id="studentList" aria-label="학생 명단"></ul>
+              <p class="empty-copy" id="emptyStudents">아직 등록한 학생이 없습니다.</p>
+            </section>
+
+            <section class="setting-section layout-help">
+              <div class="setting-title-row">
+                <span class="field-label">자리 편집</span>
+                <button class="toggle-button" id="layoutEditButton" type="button" aria-pressed="false">편집 시작</button>
+              </div>
+              <p>편집 중 좌석을 누르면 학생이 배치되지 않는 자리로 바뀝니다.</p>
+            </section>
+
+            <button class="danger-link" id="resetButton" type="button">모든 저장 데이터 초기화</button>
+          </div>
+        </aside>
+
+        <section class="board-panel" aria-labelledby="boardTitle">
+          <div class="board-heading">
+            <div>
+              <p class="eyebrow" id="classLabel">우리 반</p>
+              <h2 id="boardTitle">자리 배치표</h2>
+            </div>
+            <div class="board-meta" aria-live="polite">
+              <span><b id="activeSeatCount">0</b> 사용 좌석</span>
+              <span><b id="fixedSeatCount">0</b> 고정</span>
+            </div>
+          </div>
+
+          <div class="notice" id="notice" role="status" aria-live="polite" hidden></div>
+
+          <div class="classroom-shell" id="classroomShell">
+            <div class="front-marker" id="frontMarker"><span aria-hidden="true">▰</span> 교탁 · 칠판</div>
+            <div class="seat-grid" id="seatGrid" aria-label="교실 좌석 배치"></div>
+          </div>
+
+          <div class="board-actions">
+            <button class="pill pill-outline" id="undoButton" type="button" disabled>직전 배치로 되돌리기</button>
+            <p><span class="legend locked"></span> 고정 자리 <span class="legend disabled"></span> 사용하지 않는 자리</p>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="view app-view" id="pdfView" aria-labelledby="pdfAppTitle">
+      <div class="app-local-nav">
+        <div>
+          <button class="back-button" id="backFromPdf" type="button">← 허브</button>
+          <span class="local-title" id="pdfAppTitle">PDF 글자 수 세기</span>
+        </div>
+        <span class="local-only-badge"><span class="status-dot" aria-hidden="true"></span>로컬 처리 중</span>
+      </div>
+
+      <div class="pdf-workspace">
+        <section class="pdf-intro" aria-labelledby="pdfTitle">
+          <p class="section-kicker">PRIVATE PDF COUNTER</p>
+          <h2 id="pdfTitle">PDF는 올리지 않고,<br>글자 수만 세어요.</h2>
+          <p>파일을 선택하면 이 브라우저의 메모리에서만 텍스트를 읽습니다. PDF 원문과 계산 결과는 서버로 전송하거나 저장하지 않습니다.</p>
+          <ul class="privacy-list" aria-label="개인정보 보호 안내">
+            <li><span aria-hidden="true">✓</span>파일 업로드 없음</li>
+            <li><span aria-hidden="true">✓</span>로그인·데이터 저장 없음</li>
+            <li><span aria-hidden="true">✓</span>탭을 닫으면 결과 삭제</li>
+          </ul>
+        </section>
+
+        <section class="pdf-tool-card" aria-labelledby="uploadTitle">
+          <label class="drop-zone" id="pdfDropZone" for="pdfFileInput" tabindex="0" role="button" aria-describedby="dropHelp">
+            <input id="pdfFileInput" type="file" accept="application/pdf,.pdf" hidden>
+            <span class="upload-icon" aria-hidden="true">↑</span>
+            <h3 id="uploadTitle">PDF 파일을 놓아주세요</h3>
+            <p id="dropHelp">여기로 끌어오거나 눌러서 파일을 선택하세요.</p>
+            <span class="file-limit">PDF 1개 · 최대 200MB</span>
+          </label>
+
+          <div class="pdf-progress" id="pdfProgress" hidden aria-live="polite">
+            <div class="file-row">
+              <span class="file-icon" aria-hidden="true">PDF</span>
+              <span class="file-details"><strong id="pdfFileName"></strong><small id="pdfFileMeta"></small></span>
+              <button class="text-button" id="clearPdfButton" type="button">지우기</button>
+            </div>
+            <div class="progress-track" aria-hidden="true"><span id="pdfProgressBar"></span></div>
+            <p id="pdfStatusText">파일을 준비하고 있어요.</p>
+          </div>
+
+          <div class="pdf-error" id="pdfError" role="alert" hidden></div>
+
+          <div class="pdf-results" id="pdfResults" hidden aria-live="polite">
+            <div class="results-heading">
+              <div><p class="section-kicker">RESULT</p><h3>계산 결과</h3></div>
+              <button class="pill pill-outline" id="copyResultButton" type="button">결과 복사</button>
+            </div>
+            <div class="stat-grid">
+              <article class="stat-card primary-stat"><span>공백 제외</span><strong id="countNoSpaces">0</strong><small>글자</small></article>
+              <article class="stat-card"><span>공백 포함</span><strong id="countWithSpaces">0</strong><small>글자</small></article>
+              <article class="stat-card"><span>어절</span><strong id="countWords">0</strong><small>개</small></article>
+              <article class="stat-card"><span>페이지</span><strong id="countPages">0</strong><small>쪽</small></article>
+            </div>
+            <div class="manuscript-row"><span>200자 원고지로 약</span><strong id="countSheets">0매</strong></div>
+            <details class="text-preview">
+              <summary>추출된 텍스트 미리보기</summary>
+              <pre id="pdfTextPreview"></pre>
+            </details>
+            <p class="result-note">※ 글자 수는 PDF에 저장된 텍스트 기준입니다. 이미지로 스캔된 PDF는 OCR 없이 읽을 수 없어요.</p>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="view app-view" id="redactView" aria-labelledby="redactAppTitle">
+      <div class="app-local-nav">
+        <div>
+          <button class="back-button" id="backFromRedact" type="button">← 허브</button>
+          <span class="local-title" id="redactAppTitle">생활기록부 개인정보 가리기</span>
+        </div>
+        <span class="local-only-badge"><span class="status-dot" aria-hidden="true"></span>업로드 없이 이 기기에서 처리</span>
+      </div>
+
+      <div class="redact-workspace">
+        <section class="redact-intro" aria-labelledby="redactTitle">
+          <p class="section-kicker">LOCAL PRIVACY CHECK</p>
+          <h2 id="redactTitle">외부 AI에 보내기 전,<br>식별 단서를 한 번 더.</h2>
+          <p>PDF의 글자와 이미지를 브라우저 메모리에서만 읽습니다. 학생 이름과 학번, 학교·지역·날짜·대회 같은 단서를 찾아 분석용 표현으로 바꿉니다.</p>
+          <ol class="redact-steps" aria-label="사용 순서">
+            <li><b>1</b><span>PDF 불러오기</span></li>
+            <li><b>2</b><span>자동 탐지 결과 검토</span></li>
+            <li><b>3</b><span>직접 확인 후 복사</span></li>
+          </ol>
+          <div class="safety-callout">
+            <strong>중요</strong>
+            <p>자동 탐지는 보조 기능입니다. 희귀한 활동이나 문맥으로 학생·학교를 추정할 수 있으므로 결과를 반드시 직접 확인하세요.</p>
+          </div>
+        </section>
+
+        <section class="redact-tool-card" aria-labelledby="redactUploadTitle">
+          <label class="drop-zone redact-drop-zone" id="redactDropZone" for="redactFileInput" tabindex="0" role="button" aria-describedby="redactDropHelp">
+            <input id="redactFileInput" type="file" accept="application/pdf,.pdf" hidden>
+            <span class="upload-icon shield-icon" aria-hidden="true">◇</span>
+            <h3 id="redactUploadTitle">생활기록부 PDF를 놓아주세요</h3>
+            <p id="redactDropHelp">텍스트 PDF는 바로 읽고, 스캔 PDF는 한국어 OCR을 실행합니다.</p>
+            <span class="file-limit">PDF 1개 · 한 학생 · 최대 50MB</span>
+          </label>
+
+          <div class="redact-progress" id="redactProgress" hidden aria-live="polite">
+            <div class="file-row">
+              <span class="file-icon" aria-hidden="true">PDF</span>
+              <span class="file-details"><strong id="redactFileName"></strong><small id="redactFileMeta"></small></span>
+              <button class="text-button" id="clearRedactButton" type="button">처음부터</button>
+            </div>
+            <div class="progress-track" aria-hidden="true"><span id="redactProgressBar"></span></div>
+            <p id="redactStatusText">파일을 준비하고 있어요.</p>
+          </div>
+
+          <div class="pdf-error" id="redactError" role="alert" hidden></div>
+
+          <div class="redact-editor" id="redactEditor" hidden>
+            <section class="identity-panel" aria-labelledby="identityTitle">
+              <div class="editor-section-head">
+                <div><span class="step-chip">1</span><h3 id="identityTitle">정확히 가릴 정보</h3></div>
+                <span class="muted-note">저장되지 않아요</span>
+              </div>
+              <p>알고 있는 값은 직접 적으면 OCR 오인식이 있더라도 더 확실하게 찾을 수 있습니다.</p>
+              <div class="identity-grid">
+                <label>학생 이름<input class="text-input" id="studentName" autocomplete="off" placeholder="예: 김민수"></label>
+                <label>학번<input class="text-input" id="studentNumber" autocomplete="off" inputmode="numeric" placeholder="예: 20261234"></label>
+              </div>
+              <label class="full-field">추가로 가릴 표현
+                <textarea id="customTerms" rows="3" placeholder="학교명, 지역명, 교사명, 동아리명 등을 쉼표나 줄바꿈으로 입력"></textarea>
+              </label>
+              <button class="pill pill-blue" id="applyRedactionButton" type="button">다시 탐지하기</button>
+            </section>
+
+            <section class="findings-panel" aria-labelledby="findingsTitle">
+              <div class="editor-section-head">
+                <div><span class="step-chip">2</span><h3 id="findingsTitle">자동 탐지 결과</h3></div>
+                <strong class="finding-total" id="findingTotal">0개</strong>
+              </div>
+              <div class="finding-summary" id="findingSummary"></div>
+              <div class="finding-list" id="findingList"></div>
+            </section>
+
+            <section class="compare-panel" aria-labelledby="compareTitle">
+              <div class="editor-section-head">
+                <div><span class="step-chip">3</span><h3 id="compareTitle">원문과 복사본 비교</h3></div>
+                <span class="muted-note">오른쪽 내용은 직접 수정할 수 있어요</span>
+              </div>
+              <div class="compare-grid">
+                <label>OCR·추출 원문<textarea id="sourceText" readonly spellcheck="false"></textarea></label>
+                <label>AI에 붙여넣을 복사본<textarea id="redactedText" spellcheck="false"></textarea></label>
+              </div>
+            </section>
+
+            <section class="copy-panel" aria-labelledby="copyTitle">
+              <div>
+                <h3 id="copyTitle">마지막으로 직접 확인해 주세요</h3>
+                <label class="review-check"><input id="reviewConfirmed" type="checkbox"><span>이름·학번·학교·지역·날짜·대회·기관 등 식별 단서가 남지 않았는지 확인했습니다.</span></label>
+              </div>
+              <button class="pill pill-blue copy-safe-button" id="copyRedactedButton" type="button" disabled>검토한 복사본 복사</button>
+            </section>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="modal" id="confirmDialog" aria-labelledby="dialogTitle">
+    <form method="dialog">
+      <div class="dialog-icon" aria-hidden="true">!</div>
+      <h2 id="dialogTitle">저장 데이터를 초기화할까요?</h2>
+      <p>학생 명단, 교실 모양, 현재 배치가 모두 삭제됩니다. 이 작업은 되돌릴 수 없습니다.</p>
+      <div class="dialog-actions">
+        <button class="pill pill-outline" value="cancel">취소</button>
+        <button class="pill danger-button" id="confirmResetButton" value="confirm">초기화</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="./app.js"></script>
+  <script type="module" src="./pdf-counter.js"></script>
+  <script type="module" src="./redactor.js"></script>
+</body>
+</html>

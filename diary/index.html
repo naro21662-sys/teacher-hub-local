@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f0e8">
+  <meta name="description" content="로컬 폴더에만 저장되는 개인 일기장">
+  <title>나의 일기장</title>
+  <link rel="stylesheet" href="/diary/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="topbar">
+    <a class="hub-link" href="/">← 교실 도구함</a>
+    <div class="save-status"><span class="status-dot"></span>로컬 폴더에 자동 저장</div>
+  </header>
+
+  <main id="main">
+    <section class="intro">
+      <p class="kicker">MY PRIVATE JOURNAL</p>
+      <h1>내 마음이 머무는 곳.</h1>
+      <p>오늘의 기분과 생각을 조용히 남겨보세요.<br>기록은 이 컴퓨터의 로컬 폴더에만 저장됩니다.</p>
+      <div class="summary" aria-label="일기 현황">
+        <div><strong id="totalCount">0</strong><span>전체 기록</span></div>
+        <div><strong id="monthCount">0</strong><span>이번 달</span></div>
+        <div><strong id="streakCount">0</strong><span>연속 기록</span></div>
+      </div>
+    </section>
+
+    <section class="journal-shell">
+      <aside class="entry-list-panel">
+        <div class="panel-head">
+          <div><p class="kicker">ARCHIVE</p><h2>지난 기록</h2></div>
+          <button class="round-button" id="newEntryButton" type="button" aria-label="새 일기 쓰기">+</button>
+        </div>
+        <label class="search-box">
+          <span aria-hidden="true">⌕</span>
+          <span class="sr-only">일기 검색</span>
+          <input id="searchInput" type="search" placeholder="제목, 내용, 태그 검색">
+        </label>
+        <div class="filter-row" id="moodFilters" aria-label="기분으로 필터">
+          <button class="filter-chip is-active" data-mood="" type="button">전체</button>
+          <button class="filter-chip" data-mood="행복" type="button">행복</button>
+          <button class="filter-chip" data-mood="평온" type="button">평온</button>
+          <button class="filter-chip" data-mood="슬픔" type="button">슬픔</button>
+          <button class="filter-chip" data-mood="복잡" type="button">복잡</button>
+        </div>
+        <div class="entry-list" id="entryList"></div>
+        <div class="empty-state" id="emptyState" hidden>
+          <span>✎</span><strong>아직 일기가 없어요.</strong><p>오늘의 첫 기록을 남겨보세요.</p>
+        </div>
+      </aside>
+
+      <section class="editor-panel" aria-labelledby="editorTitle">
+        <form id="entryForm">
+          <div class="editor-top">
+            <div>
+              <p class="kicker" id="editorMode">NEW ENTRY</p>
+              <h2 id="editorTitle">오늘을 기록해요</h2>
+            </div>
+            <button class="delete-button" id="deleteButton" type="button" hidden>삭제</button>
+          </div>
+
+          <div class="meta-grid">
+            <label><span>날짜</span><input id="dateInput" name="date" type="date" required></label>
+            <fieldset>
+              <legend>오늘의 기분</legend>
+              <div class="mood-picker">
+                <label><input type="radio" name="mood" value="행복"><span title="행복">행복 <b>☺</b></span></label>
+                <label><input type="radio" name="mood" value="평온" checked><span title="평온">평온 <b>○</b></span></label>
+                <label><input type="radio" name="mood" value="슬픔"><span title="슬픔">슬픔 <b>◡</b></span></label>
+                <label><input type="radio" name="mood" value="복잡"><span title="복잡">복잡 <b>≋</b></span></label>
+              </div>
+            </fieldset>
+          </div>
+
+          <label class="title-field"><span class="sr-only">일기 제목</span><input id="titleInput" name="title" maxlength="80" placeholder="오늘은 어떤 하루였나요?" required></label>
+          <label class="content-field"><span class="sr-only">일기 내용</span><textarea id="contentInput" name="content" maxlength="20000" placeholder="오늘 있었던 일, 마음에 남은 장면, 나에게 해주고 싶은 말을 자유롭게 적어보세요." required></textarea></label>
+          <div class="editor-footer">
+            <label class="tags-field"><span>#</span><input id="tagsInput" placeholder="태그를 쉼표로 구분"></label>
+            <span class="char-count" id="charCount">0자</span>
+            <button class="save-button" id="saveButton" type="submit">기록 저장</button>
+          </div>
+        </form>
+      </section>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="/diary/app.js"></script>
+</body>
+</html>

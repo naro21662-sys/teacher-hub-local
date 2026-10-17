@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  macOS 로그인 시 서버를 자동 실행하는 launchd 설정 예시입니다.
+  com.deok.teacher-hub-local.plist 이름으로 복사한 뒤 아래 /path/to/teacher-hub-local 부분을
+  실제 폴더 경로로, node 경로는 `which node` 결과로 바꿔 주세요.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.deok.teacher-hub-local</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/opt/homebrew/bin/node</string>
+    <string>/path/to/teacher-hub-local/server.js</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/path/to/teacher-hub-local</string>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>StandardOutPath</key>
+  <string>/path/to/teacher-hub-local/server.log</string>
+  <key>StandardErrorPath</key>
+  <string>/path/to/teacher-hub-local/server-error.log</string>
+</dict>
+</plist>
